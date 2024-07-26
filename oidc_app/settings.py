@@ -136,31 +136,19 @@ LOGIN_REDIRECT_URL = "index"
 LOGOUT_REDIRECT_URL = "index"
 
 
-OKTA_DOMAIN = os.environ.get("OKTA_DOMAIN", "")  # [Your Okta domain]
+KEYCLOAK_DOMAIN = os.environ.get("KEYCLOAK_DOMAIN", "")  # [Your Keycloak domain]
 
-OIDC_RP_CLIENT_ID = os.environ.get(
-    "OIDC_RP_CLIENT_ID", ""
-)  # [Your Okta application’s client ID]
-OIDC_RP_CLIENT_SECRET = os.environ.get(
-    "OIDC_RP_CLIENT_SECRET", ""
-)  # [Your Okta application’s client secret]
+OIDC_RP_CLIENT_ID = "django-client-id"
+OIDC_RP_CLIENT_SECRET = "<client-secret>"
 
 OIDC_RP_SIGN_ALGO = "RS256"
-OIDC_OP_AUTHORIZATION_ENDPOINT = f"https://{OKTA_DOMAIN}/oauth2/default/v1/authorize"  # The OIDC authorization endpoint
-OIDC_RP_TOKEN_ENDPOINT = (
-    f"https://{OKTA_DOMAIN}/oauth2/default/v1/token"  # The OIDC token endpoint
-)
-OIDC_OP_USER_ENDPOINT = (
-    f"https://{OKTA_DOMAIN}/oauth2/default/v1/userinfo"  # The OIDC userinfo endpoint
-)
-OIDC_OP_TOKEN_ENDPOINT = (
-    f"https://{OKTA_DOMAIN}/oauth2/default/v1/token"  # The OIDC token endpoint
-)
-OIDC_OP_JWKS_ENDPOINT = (
-    f"https://{OKTA_DOMAIN}/oauth2/default/v1/keys"  # The OIDC JWKS endpoint
-)
+OIDC_OP_AUTHORIZATION_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/auth"
+OIDC_RP_TOKEN_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/token"
+OIDC_OP_USER_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/userinfo"
+OIDC_OP_TOKEN_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/token"
+OIDC_OP_JWKS_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/certs"
 
-OIDC_OP_TOKEN_REVOKE_ENDPOINT = f"https://{OKTA_DOMAIN}/oauth2/default/v1/revoke"  # The OIDC token revocation endpoint
+OIDC_OP_TOKEN_REVOKE_ENDPOINT = "http://localhost:8080/realms/myrealm/protocol/openid-connect/revoke"
 
 OIDC_RENEW_ID_TOKEN_EXPIRY_SECONDS = 60 * 60  # 1 hour
 

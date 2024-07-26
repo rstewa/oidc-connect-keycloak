@@ -20,7 +20,7 @@ help:
 
 env:
 	@ echo '<<<<<<<<<<Creating virtual environment>>>>>>>>>'
-	python3.10 -m venv env
+	python -m venv env
 	@ echo ''
 
 
@@ -36,7 +36,7 @@ migrate:
 
 run:
 	@ echo '<<<<<<<<<<starting server>>>>>>>>>'
-	python manage.py runserver 8080
+	python manage.py runserver 7000
 	@ echo ''
 
 default: help
